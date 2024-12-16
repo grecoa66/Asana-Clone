@@ -1,5 +1,21 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
+import { Avatar, AvatarFallback } from "~/components/ui/avatar";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "~/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "~/components/ui/table";
 import { projects, tasks, teams, users } from "~/data/data";
 
 export const loader = ({ params }: LoaderFunctionArgs) => {
@@ -31,27 +47,84 @@ export const TeamPage = () => {
     useLoaderData<typeof loader>();
   return (
     <div>
-      <h2>Team</h2>
-      <p>{team.name}</p>
-      <h3 className="text-xl">Team Members</h3>
-      {teamMembers.map((tm) => (
-        <div className="border-b-2 border-black">
-          <p>Name: {tm.name}</p>
-          <p>Email: {tm.email}</p>
-        </div>
-      ))}
-      <h3 className="text-xl">Team Projects</h3>
-      {teamProjects.map((tp) => (
-        <div className="border-b-2 border-black">
-          <p>Name: {tp.name}</p>
-        </div>
-      ))}
-      <h3 className="text-xl">Team Tasks</h3>
-      {teamTasks.map((tt) => (
-        <div>
-          <p>Name: {tt.name}</p>
-        </div>
-      ))}
+      {/* Avatar & Team Name (Bigger) */}
+      <div className="h-24 bg-violet-400 opacity-50" />
+      <div className="px-4 ">
+        <Avatar className="w-24 h-24 relative top-[-48px] mb-[-42px]">
+          <AvatarFallback>{team.name.substring(0, 1)}</AvatarFallback>
+        </Avatar>
+        <p className="text-xl">{team.name}</p>
+      </div>
+      {/* Projects Table */}
+      <Card className="m-4">
+        <CardHeader>
+          <CardTitle>Projects</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-2/3">Name</TableHead>
+                <TableHead className="w-1/3">Members</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {teamProjects.map((tp) => (
+                <TableRow>
+                  <TableCell className="text-lg">
+                    <p>{tp.name}</p>
+                    <p className="text-xs text-gray-400">{tp.description}</p>
+                  </TableCell>
+                  <TableCell>
+                    {tp.teams.map((t) => (
+                      <div>
+                        {t.users.map((u) => (
+                          <p>{u.name}</p>
+                        ))}
+                      </div>
+                    ))}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
+      {/* Tasks */}
+      <Card className="m-4">
+        <CardHeader>
+          <CardTitle>Tasks</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-1/2">Name</TableHead>
+                <TableHead className="w-1/4">Status</TableHead>
+                <TableHead className="w-1/4">Members</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {teamTasks.map((tt) => (
+                <TableRow>
+                  <TableCell className="text-lg flex flex-col gap-1">
+                    <p>{tt.name}</p>
+                    <p className="text-xs text-gray-400">{tt.description}</p>
+                  </TableCell>
+                  <TableCell>
+                    <p>{tt.status.status}</p>
+                  </TableCell>
+                  <TableCell>
+                    {tt.users.map((u) => (
+                      <p>{u.name}</p>
+                    ))}
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </CardContent>
+      </Card>
     </div>
   );
 };

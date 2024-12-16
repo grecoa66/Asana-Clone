@@ -60,6 +60,13 @@ const project2: Project = {
   teams: [team2, team3],
 };
 
+const project3: Project = {
+  id: "project-abc-789",
+  name: "Dice Design Library",
+  description: "Building the components for the future",
+  teams: [team1, team2],
+};
+
 // TASKS
 
 const task1: Task = {
@@ -100,11 +107,19 @@ const task4: Task = {
   users: [user1, user3],
   projects: [project1],
 };
+const task5: Task = {
+  id: "task-def-456",
+  name: "Login Card",
+  description: "Design a generic login component.",
+  status: { dueDate: new Date("1/10/2025"), status: "To Do" },
+  users: [user1],
+  projects: [project1],
+};
 
 const users = [user1, user2, user3, user4];
 const teams = [team1, team2, team3];
-const projects = [project1, project2];
-const tasks = [task1, task2, task3, task4];
+const projects = [project1, project2, project3];
+const tasks = [task1, task2, task3, task4, task5];
 
 export {
   user1,
@@ -116,10 +131,12 @@ export {
   team3,
   project1,
   project2,
+  project3,
   task1,
   task2,
   task3,
   task4,
+  task5,
   users,
   teams,
   projects,
