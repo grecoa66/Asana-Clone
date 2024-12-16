@@ -101,6 +101,11 @@ const task4: Task = {
   projects: [project1],
 };
 
+const users = [user1, user2, user3, user4];
+const teams = [team1, team2, team3];
+const projects = [project1, project2];
+const tasks = [task1, task2, task3, task4];
+
 export {
   user1,
   user2,
@@ -115,4 +120,8 @@ export {
   task2,
   task3,
   task4,
+  users,
+  teams,
+  projects,
+  tasks,
 };
