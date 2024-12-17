@@ -1,13 +1,7 @@
 import { LoaderFunctionArgs } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import { Avatar, AvatarFallback } from "~/components/ui/avatar";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "~/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "~/components/ui/card";
 import {
   Table,
   TableBody,
@@ -70,16 +64,16 @@ export const TeamPage = () => {
             </TableHeader>
             <TableBody>
               {teamProjects.map((tp) => (
-                <TableRow>
+                <TableRow key={tp.id}>
                   <TableCell className="text-lg">
                     <p>{tp.name}</p>
                     <p className="text-xs text-gray-400">{tp.description}</p>
                   </TableCell>
                   <TableCell>
                     {tp.teams.map((t) => (
-                      <div>
+                      <div key={t.id}>
                         {t.users.map((u) => (
-                          <p>{u.name}</p>
+                          <p key={u.id}>{u.name}</p>
                         ))}
                       </div>
                     ))}

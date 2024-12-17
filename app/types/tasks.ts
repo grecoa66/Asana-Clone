@@ -5,6 +5,8 @@ export type Status = {
   status: "To Do" | "Doing" | "Testing" | "Done";
 };
 
+export type Priority = "Low" | "Medium" | "High";
+
 export type Project = {
   readonly id: string;
   name: string;
@@ -17,6 +19,7 @@ export type Task = {
   name: string;
   description: string;
   status: Status;
+  priority: Priority;
   users: User[];
   projects: Project[];
 };

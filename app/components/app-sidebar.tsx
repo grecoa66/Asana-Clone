@@ -11,7 +11,7 @@ import {
   SidebarMenuItem,
   SidebarRail,
 } from "~/components/ui/sidebar";
-import { project1, project2, team1, team2, team3 } from "~/data/data";
+import { projects, teams } from "~/data/data";
 
 import {
   House,
@@ -22,16 +22,16 @@ import {
   Award,
 } from "lucide-react";
 
-const data = {
+const navData = {
   navMain: [
     {
       title: "Home",
-      url: "#",
+      url: "/",
       items: [
         {
           title: "Homepage",
           icon: House,
-          url: "#",
+          url: "/",
         },
         {
           title: "My Tasks",
@@ -69,7 +69,7 @@ const data = {
     {
       title: "Projects",
       url: "#",
-      items: [project1, project2].map((project) => ({
+      items: projects.map((project) => ({
         title: project.name,
         icon: undefined,
         url: `/project/${project.id}`,
@@ -78,7 +78,7 @@ const data = {
     {
       title: "Teams",
       url: "#",
-      items: [team1, team2, team3].map((team) => ({
+      items: teams.map((team) => ({
         title: team.name,
         icon: undefined,
         url: `/team/${team.id}`,
@@ -92,7 +92,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     <Sidebar {...props}>
       <SidebarContent>
         {/* We create a SidebarGroup for each parent. */}
-        {data.navMain.map((item) => (
+        {navData.navMain.map((item) => (
           <SidebarGroup key={item.title}>
             <SidebarGroupLabel>{item.title}</SidebarGroupLabel>
             <SidebarGroupContent>

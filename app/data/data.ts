@@ -75,6 +75,7 @@ const task1: Task = {
   description:
     "Users should be able to sign in. Use KeyCloak as authentication providor",
   status: { dueDate: new Date("12/20/2024"), status: "Testing" },
+  priority: "Low",
   users: [user1, user4],
   projects: [project2],
 };
@@ -85,7 +86,8 @@ const task2: Task = {
   description:
     "Users should be able to sign out. There sessions should be destroyed. Use KeyCloak as authentication providor",
   status: { dueDate: new Date("12/21/2024"), status: "Doing" },
-  users: [user1],
+  priority: "High",
+  users: [user1, user2],
   projects: [project1],
 };
 
@@ -95,6 +97,7 @@ const task3: Task = {
   description:
     "Users should be able to see their user details, edit them, and save changes.",
   status: { dueDate: new Date("12/30/2024"), status: "To Do" },
+  priority: "Medium",
   users: [user2],
   projects: [project1],
 };
@@ -103,7 +106,8 @@ const task4: Task = {
   id: "task-def-123",
   name: "Delete User",
   description: "Users should be able to delete their user account.",
-  status: { dueDate: new Date("12/30/2024"), status: "To Do" },
+  status: { dueDate: new Date("12/1/2024"), status: "To Do" },
+  priority: "Low",
   users: [user1, user3],
   projects: [project1],
 };
@@ -112,14 +116,37 @@ const task5: Task = {
   name: "Login Card",
   description: "Design a generic login component.",
   status: { dueDate: new Date("1/10/2025"), status: "To Do" },
-  users: [user1],
+  priority: "High",
+  users: [user1, user3],
+  projects: [project1, project3],
+};
+
+const task6: Task = {
+  id: "task-def-789",
+  name: "List Things in DataTable component",
+  description: "Implement a ShadCN datagrid to display all things.",
+  status: { dueDate: new Date("12/10/2024"), status: "Done" },
+  priority: "Medium",
+  users: [user1, user3],
+  projects: [project1, project3],
+};
+
+const task7: Task = {
+  id: "task-ghi-123",
+  name: "Create Thing",
+  description:
+    "Add a form to the UI. Write service function to create thing via Thing Api",
+  status: { dueDate: new Date("12/12/2024"), status: "Done" },
+  priority: "High",
+  users: [user2, user3],
   projects: [project1],
 };
 
 const users = [user1, user2, user3, user4];
+const currentUser = user3;
 const teams = [team1, team2, team3];
 const projects = [project1, project2, project3];
-const tasks = [task1, task2, task3, task4, task5];
+const tasks = [task1, task2, task3, task4, task5, task6, task7];
 
 export {
   user1,
@@ -137,6 +164,9 @@ export {
   task3,
   task4,
   task5,
+  task6,
+  task7,
+  currentUser,
   users,
   teams,
   projects,
