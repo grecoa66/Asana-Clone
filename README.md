@@ -1,38 +1,9 @@
-# Welcome to Remix!
+# Asana Clone
 
-- [Remix Docs](https://remix.run/docs)
+This project was part of an informal hackathon for Dust Identity.
 
-## Development
+The purpose of this project was to evaluate ShadCN and V0 (Vercel) for building the UI of a Remix project.
 
-From your terminal:
+The instructions were to build a clone of the popular project management system "asana". This demo was focused on the UI. We did not integrate with any backend services.
 
-```sh
-npm run dev
-```
-
-This starts your app in development mode, rebuilding assets on file changes.
-
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `remix build`
-
-- `build/`
-- `public/build/`
+I used CodeSanbox to build out the demo. I started the project with the Remix template. I added Tailwind and ShadCN as dependencies.
